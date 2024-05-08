@@ -31,9 +31,9 @@ public class Arboles {
                +"elige una opcion", "umg",JOptionPane.QUESTION_MESSAGE));
                switch(opc){
                    case 1:
-                       dato=Long.parseLong(JOptionPane.showInputDialog(null, "ingresa el numero del nodo"));
-                   nombre=JOptionPane.showInputDialog(null, "INGRESE NOMBRE EL NODO","umg",JOptionPane.QUESTION_MESSAGE);
-                   arbolito.AgregarNodo(dato, nombre);
+                    int LI =Integer.parseInt(JOptionPane.showInputDialog(null, "ingresa el numero de linea INICIAL que desea cargar"));
+                    int LF =Integer.parseInt(JOptionPane.showInputDialog(null, "ingresa el numero de linea FINAL que desea cargar"));
+                    ArchivoTexto.cargarDatosDeArchivo(arbolito, "registros.txt", LI,LF);
                        break;
                    case 2: if(!arbolito.EstaVacio()){
                        System.out.println();
