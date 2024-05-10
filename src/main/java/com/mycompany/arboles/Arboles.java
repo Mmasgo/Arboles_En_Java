@@ -17,8 +17,13 @@ public class Arboles {
        String nombre;
        long dato;
        
-       ArbolBB arbolito=new ArbolBB();     
+       Ventana principal= new Ventana();
+       principal.setVisible(true);
+       principal.setLocationRelativeTo(null);
        
+       ArbolBB arbolito=new ArbolBB();     
+ 
+       /*
        do{
            try{
                opc=Integer.parseInt(JOptionPane.showInputDialog(null, "1. agregar\n"
@@ -33,7 +38,7 @@ public class Arboles {
                    case 1:
                     int LI =Integer.parseInt(JOptionPane.showInputDialog(null, "ingresa el numero de linea INICIAL que desea cargar"));
                     int LF =Integer.parseInt(JOptionPane.showInputDialog(null, "ingresa el numero de linea FINAL que desea cargar"));
-                    ArchivoTexto.cargarDatosDeArchivo(arbolito, "registros.txt", LI,LF);
+                    //ArchivoTexto.cargarDatosDeArchivo(arbolito, "registros.txt", LI,LF);
                        break;
                    case 2: if(!arbolito.EstaVacio()){
                        System.out.println();
@@ -88,6 +93,7 @@ public class Arboles {
                JOptionPane.showInputDialog(null,"error","error",JOptionPane.INFORMATION_MESSAGE);
            }
        }while(opc!=7);
+*/
         
     }
         

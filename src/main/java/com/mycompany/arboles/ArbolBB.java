@@ -47,11 +47,11 @@ public class ArbolBB {
          return raiz==null;
     }
    
-    public void InOrden(Nodo r){
+    public void InOrden(Nodo r, StringBuilder sb){
         if(r!=null){
-            InOrden(r.HijoIzquierdo);
-            System.out.println(r.dpi);
-            InOrden(r.HijoDerecho);
+            InOrden(r.HijoIzquierdo,sb);
+            sb.append(r.dpi).append("\n");
+            InOrden(r.HijoDerecho,sb);
         }
     }
     public void PreOrden(Nodo r){

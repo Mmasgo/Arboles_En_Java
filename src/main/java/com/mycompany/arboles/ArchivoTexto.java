@@ -7,12 +7,16 @@ package com.mycompany.arboles;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author MiriamMas
  */
 public class ArchivoTexto {
+    
+    public static ArrayList<Nodo> hojas=new ArrayList<>();
+    
     public static void cargarDatosDeArchivo(ArbolBB arch, String rutaArchivo, int lineaInicial, int LineaFinal) {
     try {
         BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo));
@@ -28,6 +32,7 @@ public class ArchivoTexto {
             String dpiST = partes[1];
             long dpi = Long.parseLong(dpiST);
             arch.AgregarNodo(dpi, nombre);
+            hojas.add(new Nodo(dpi,nombre));
         }
            }
         reader.close();
@@ -35,5 +40,7 @@ public class ArchivoTexto {
         System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
         e.printStackTrace();
     }
-}
+
+    
+}    
 }
