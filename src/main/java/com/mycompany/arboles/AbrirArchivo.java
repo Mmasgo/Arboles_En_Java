@@ -9,6 +9,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -26,6 +27,16 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
         BotonInActionPerformed(evt);
     }
 });
+BotonPre.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BotonPreActionPerformed(evt);
+    }
+});
+BotonPost.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BotonPostActionPerformed(evt);
+    }
+});
     }
 
 
@@ -39,8 +50,8 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTextArea = new javax.swing.JTextArea();
         BotonIn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BotonPre = new javax.swing.JButton();
+        BotonPost = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,9 +80,19 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
-        jButton3.setText("PreOrden");
+        BotonPre.setText("PreOrden");
+        BotonPre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPreActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("PostOrden");
+        BotonPost.setText("PostOrden");
+        BotonPost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPostActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,9 +104,9 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(BotonIn)
                         .addGap(53, 53, 53)
-                        .addComponent(jButton3)
+                        .addComponent(BotonPre)
                         .addGap(62, 62, 62)
-                        .addComponent(jButton4)
+                        .addComponent(BotonPost)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -108,8 +129,8 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonIn)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(BotonPre)
+                    .addComponent(BotonPost))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -137,8 +158,13 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
         arbolito=new ArbolBB();
         JFileChooser fc= new JFileChooser();//creando objeto
         
-        //abriendo ventana, guardamos la opcion seleccionada por el usuario
+        //creando un filtro para archivos txt
+        FileNameExtensionFilter filtro=new FileNameExtensionFilter(".TXT", "txt");
         
+        //indicamos el filtro
+        fc.setFileFilter(filtro);
+        
+        //abriendo ventana, guardamos la opcion seleccionada por el usuario        
         int seleccion=fc.showOpenDialog(this);
         
         //si el usuario selecciona aceptar
@@ -154,8 +180,6 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
            
             //agregando al arbol
             ArchivoTexto.cargarDatosDeArchivo(arbolito, fichero.getAbsolutePath(), LI, LF);   
- 
-
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -179,14 +203,39 @@ BotonIn.addActionListener(new java.awt.event.ActionListener() {
     
     }//GEN-LAST:event_BotonInActionPerformed
 
+    private void BotonPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPreActionPerformed
+
+        StringBuilder sb=new StringBuilder();
+        
+        JTextArea.setText("");//limpiar Text
+        
+        //llamar al metodo InOrden y capturar la salida en el StringBuilder
+        if(arbolito != null && !arbolito.EstaVacio()){
+            arbolito.PreOrden(arbolito.raiz,sb);
+        }
+        JTextArea.setText(sb.toString());//mostrar la salida en el text
+    }//GEN-LAST:event_BotonPreActionPerformed
+
+    private void BotonPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPostActionPerformed
+      
+        StringBuilder sb=new StringBuilder();
+        
+        JTextArea.setText("");//limpiar Text
+        
+        //llamar al metodo InOrden y capturar la salida en el StringBuilder
+        if(arbolito != null && !arbolito.EstaVacio()){
+            arbolito.PostOrden(arbolito.raiz,sb);
+        }
+        JTextArea.setText(sb.toString());//mostrar la salida en el text
+    }//GEN-LAST:event_BotonPostActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonIn;
+    private javax.swing.JButton BotonPost;
+    private javax.swing.JButton BotonPre;
     private javax.swing.JTextArea JTextArea;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.TextField textField1;

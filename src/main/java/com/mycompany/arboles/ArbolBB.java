@@ -54,19 +54,19 @@ public class ArbolBB {
             InOrden(r.HijoDerecho,sb);
         }
     }
-    public void PreOrden(Nodo r){
+    public void PreOrden(Nodo r, StringBuilder sb){
         if(r!=null){
-            System.out.println(r.dpi);
-            PreOrden(r.HijoIzquierdo);
-            PreOrden(r.HijoDerecho);
+            sb.append(r.dpi).append("\n");
+            PreOrden(r.HijoIzquierdo,sb);
+            PreOrden(r.HijoDerecho,sb);
         }
     }
     
-      public void PostOrden(Nodo r){
+      public void PostOrden(Nodo r,StringBuilder sb){
         if(r!=null){
-            PostOrden(r.HijoIzquierdo);
-            PostOrden(r.HijoDerecho);
-            System.out.println(r.dpi);
+            PostOrden(r.HijoIzquierdo,sb);
+            PostOrden(r.HijoDerecho,sb);
+            sb.append(r.dpi).append("\n");
         }
     }
       
