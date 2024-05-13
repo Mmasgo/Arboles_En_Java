@@ -15,7 +15,6 @@ import java.util.ArrayList;
  */
 public class ArchivoTexto {
     
-    public static ArrayList<Nodo> hojas=new ArrayList<>();
     
     public static void cargarDatosDeArchivo(ArbolBB arch, String rutaArchivo, int lineaInicial, int LineaFinal) {
     try {
@@ -32,7 +31,6 @@ public class ArchivoTexto {
             String dpiST = partes[1];
             long dpi = Long.parseLong(dpiST);
             arch.AgregarNodo(dpi, nombre);
-            hojas.add(new Nodo(dpi,nombre));
         }
            }
         reader.close();
