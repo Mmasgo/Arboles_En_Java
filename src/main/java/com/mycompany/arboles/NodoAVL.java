@@ -15,11 +15,20 @@ public class NodoAVL {
     NodoAVL HijoIzquierdo, HijoDerecho;
     
     public NodoAVL(long dpi, String nombre){
-        this.dpi=dpi;
+        this.dpiAVL=dpi;
         this.nombre=nombre;
         this.fe=0;
         this.HijoIzquierdo=null;
         this.HijoDerecho=null;        
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public long getDpiAVL() {
+        return dpiAVL;
+    }
+    
     
 }

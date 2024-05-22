@@ -41,4 +41,30 @@ public class ArchivoTexto {
 
     
 }    
+    
+        public static void cargarArchivoAVL(ArbolAVL arch, String rutaArchivo, int lineaInicial, int LineaFinal) {
+    try {
+        BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo));
+        String linea = reader.readLine(); // Omitir la línea de encabezado
+        int contador=0;
+        
+
+           while ((linea = reader.readLine()) != null){
+               contador++;
+               if(contador>=lineaInicial && contador <=LineaFinal){
+            String[] partes = linea.split("\t"); // Separar el nombre y el DPI
+            String nombre = partes[0].replaceAll("1", " ");
+            String dpiST = partes[1];
+            long dpi = Long.parseLong(dpiST);
+            arch.insertar(dpi, nombre);
+        }
+           }
+        reader.close();
+    } catch (IOException e) {
+        System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
+        e.printStackTrace();
+    }
+
+    
+}
 }
